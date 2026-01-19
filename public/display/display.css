@@ -1,0 +1,871 @@
+/**
+ * LED Campaign Display Styles
+ * Premium Minimalist Red & Dark Theme
+ * Fixed Resolution: 840 × 112 pixels
+ */
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+:root {
+    /* Colors */
+    --bg-dark: #080808;
+    --bg-panel: #121212;
+    --accent-red: #D32F2F;
+    /* Premium Red */
+    --accent-red-dark: #8b0000;
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --border-subtle: rgba(255, 255, 255, 0.15);
+
+    /* Legacy override */
+    --gold: #ffffff;
+    /* Override gold to white/silver */
+    --cream: #ffffff;
+
+    /* Dimensions */
+    --display-width: 840px;
+    --display-height: 112px;
+    --banner-height: 26px;
+    /* Slightly thinner */
+    --bottom-height: 18px;
+    --slot-area-height: calc(var(--display-height) - var(--banner-height) - var(--bottom-height));
+
+    /* Typography */
+    --font-main: 'Outfit', sans-serif;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: var(--display-width);
+    height: var(--display-height);
+    overflow: hidden;
+    background: var(--bg-dark);
+    font-family: var(--font-main);
+    color: var(--text-primary);
+}
+
+/* ============================================
+   DISPLAY CONTAINER
+   ============================================ */
+.display-container {
+    width: var(--display-width);
+    height: var(--display-height);
+    position: relative;
+    overflow: hidden;
+    /* Custom background image */
+    background-image: url('assets/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ============================================
+   TOP BANNER
+   ============================================ */
+.top-banner {
+    width: 100%;
+    height: var(--banner-height);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Minimalist header */
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--border-subtle);
+    backdrop-filter: blur(5px);
+
+    overflow: hidden;
+}
+
+.banner-glow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.banner-text {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--gold);
+    text-shadow:
+        0 0 10px rgba(255, 215, 0, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.5),
+        0 2px 4px rgba(0, 0, 0, 0.8);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bannerPulse 2s ease-in-out infinite;
+    white-space: nowrap;
+}
+
+@keyframes bannerPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+
+    50% {
+        opacity: 0.9;
+        text-shadow: 0 0 15px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 215, 0, 0.7);
+    }
+}
+
+/* Banner State Variants */
+.top-banner.big-win {
+    background: linear-gradient(180deg,
+            rgba(255, 215, 0, 0.4) 0%,
+            rgba(139, 0, 0, 0.95) 30%,
+            rgba(92, 0, 0, 0.95) 100%);
+    animation: bigWinBanner 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes bigWinBanner {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* ============================================
+   SLOT AREA
+   ============================================ */
+.slot-area {
+    width: 100%;
+    height: var(--slot-area-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 20px;
+    position: relative;
+}
+
+/* ============================================
+   SLOT WINDOW
+   ============================================ */
+.slot-window {
+    flex: 1;
+    max-width: 240px;
+    height: 100%;
+    position: relative;
+    transition: all var(--transition-normal) ease;
+}
+
+.slot-frame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /* Minimal Frame */
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    padding: 2px;
+    /* Subtle glow instead of heavy gold shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.slot-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,
+            #151515 0%,
+            #0a0a0a 100%);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slot-reel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.slot-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 10px;
+    width: 100%;
+}
+
+.product-icon {
+    display: none;
+    /* Icons removed per user request */
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.product-prices {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.old-price {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.new-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-red);
+    /* text-shadow removed */
+}
+
+/* Slot Glow - Minimal Border Highlight */
+.slot-glow {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 5px;
+    border: 1px solid var(--accent-red);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    z-index: 5;
+}
+
+/* ============================================
+   SLOT STATES
+   ============================================ */
+
+/* Dimmed/Locked State */
+.slot-window.dimmed {
+    opacity: 0.3;
+    filter: grayscale(1);
+    transform: scale(0.95);
+}
+
+/* Active State */
+.slot-window.active .slot-glow {
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(211, 47, 47, 0.3);
+}
+
+/* Winner State */
+.slot-window.winner {
+    animation: winnerPulse 1s ease-in-out infinite alternate;
+    z-index: 10;
+}
+
+.slot-window.winner .slot-glow {
+    opacity: 1;
+    border-color: var(--text-primary);
+    border-width: 2px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes winnerPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* Hidden slot in single mode */
+.slot-window.hidden-slot {
+    display: none;
+}
+
+/* ============================================
+   REEL STRIP - Classic Slot Machine Effect
+   ============================================ */
+
+/* Reel strip container with multiple icons */
+.reel-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.reel-item {
+    font-size: 32px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+    overflow: hidden;
+}
+
+.product-img-icon {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Slot content img override */
+.product-icon .product-img-icon {
+    height: 60px;
+    width: auto;
+}
+
+/* Show reel strip during spinning, hide content */
+.slot-window.spinning .reel-strip {
+    opacity: 1;
+    animation: reelScroll 0.12s linear infinite;
+}
+
+.slot-window.spinning .slot-content {
+    opacity: 0;
+}
+
+/* Slot content visible when not spinning */
+.slot-content {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Main reel scrolling animation */
+@keyframes reelScroll {
+    0% {
+        transform: translateY(-150px);
+    }
+
+    100% {
+        transform: translateY(50px);
+    }
+}
+
+/* Slowdown animation class (applied via JS) */
+.slot-window.slowing .reel-strip {
+    opacity: 1;
+    animation: reelSlowdown 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.slot-window.slowing .slot-content {
+    opacity: 0;
+}
+
+@keyframes reelSlowdown {
+    0% {
+        transform: translateY(-150px);
+    }
+
+    30% {
+        transform: translateY(-80px);
+    }
+
+    60% {
+        transform: translateY(-30px);
+    }
+
+    80% {
+        transform: translateY(-10px);
+    }
+
+    90% {
+        transform: translateY(-3px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Final stop - show product, hide reel */
+.slot-window.stopped .reel-strip {
+    opacity: 0;
+}
+
+.slot-window.stopped .slot-content {
+    opacity: 1;
+    animation: contentReveal 0.4s ease-out;
+}
+
+@keyframes contentReveal {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Spinning inner glow effect */
+.slot-window.spinning .slot-inner,
+.slot-window.slowing .slot-inner {
+    background: linear-gradient(180deg,
+            rgba(255, 215, 0, 0.3) 0%,
+            rgba(139, 0, 0, 0.2) 15%,
+            #0f0505 30%,
+            #0f0505 70%,
+            rgba(139, 0, 0, 0.2) 85%,
+            rgba(255, 215, 0, 0.3) 100%);
+}
+
+/* Spinning frame glow */
+.slot-window.spinning .slot-frame,
+.slot-window.slowing .slot-frame {
+    box-shadow:
+        0 0 20px rgba(255, 215, 0, 0.5),
+        0 0 40px rgba(255, 215, 0, 0.3),
+        inset 0 0 5px rgba(0, 0, 0, 0.5);
+    animation: framePulse 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes framePulse {
+    0% {
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4), inset 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.7), inset 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Hide prices in winner state */
+.slot-window.winner-mode .product-prices {
+    display: none;
+}
+
+/* ============================================
+   CAMPAIGN OVERLAY (WINNER STATE)
+   ============================================ */
+.campaign-overlay {
+    position: absolute;
+    top: var(--banner-height);
+    left: 0;
+    right: 0;
+    height: var(--slot-area-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 5, 5, 0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 10;
+}
+
+.campaign-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Split Screen Layout for Winner State --- */
+.display-container.winner .slot-area {
+    /* Shrink slot area to the right */
+    width: 60%;
+    margin-left: 40%;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.display-container.winner .slot-window {
+    /* Ensure slots are visible */
+    max-width: 220px;
+}
+
+.display-container.winner .campaign-overlay {
+    /* Show overlay on the left side */
+    width: 40%;
+    right: auto;
+    background: linear-gradient(135deg, rgba(20, 5, 5, 0.98) 0%, rgba(50, 10, 10, 0.98) 100%);
+}
+
+.campaign-message {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--text-primary);
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    animation: campaignPulse 1s ease-in-out infinite alternate;
+    text-align: center;
+    line-height: 1.3;
+    max-width: 90%;
+}
+
+/* Big Win Message Styling */
+.campaign-message.big-win-msg {
+    font-size: 48px;
+    font-weight: 900;
+    background: linear-gradient(45deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow:
+        0 0 30px rgba(255, 215, 0, 0.8),
+        0 0 60px rgba(255, 215, 0, 0.5),
+        0 4px 20px rgba(0, 0, 0, 0.8);
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+    animation: bigWinPulse 0.8s ease-in-out infinite alternate;
+    max-width: 95%;
+}
+
+@keyframes campaignPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes bigWinPulse {
+    0% {
+        transform: scale(1) rotate(-1deg);
+        filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+    }
+
+    100% {
+        transform: scale(1.15) rotate(1deg);
+        filter: drop-shadow(0 0 50px rgba(255, 215, 0, 1));
+    }
+}
+
+/* ============================================
+   BOTTOM BAR
+   ============================================ */
+.bottom-bar {
+    width: 100%;
+    height: var(--bottom-height);
+    display: flex;
+    align-items: center;
+    background: var(--bg-panel);
+    border-top: 1px solid var(--border-subtle);
+    position: relative;
+    overflow: hidden;
+}
+
+.timer-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-right: 1px solid var(--border-subtle);
+    height: 100%;
+    min-width: 160px;
+}
+
+.timer-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.timer-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.marquee-section {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg,
+            transparent 0%,
+            black 5%,
+            black 95%,
+            transparent 100%);
+}
+
+.marquee-track {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.marquee-text {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marqueeScroll 20s linear infinite;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--cream);
+    padding-right: 0;
+}
+
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(840px);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Marquee Speed Variants */
+.marquee-track.slow .marquee-text {
+    animation-duration: 30s;
+}
+
+.marquee-track.medium .marquee-text {
+    animation-duration: 20s;
+}
+
+.marquee-track.fast .marquee-text {
+    animation-duration: 10s;
+}
+
+/* Timer section hidden in idle */
+.timer-section.hidden {
+    display: none;
+}
+
+/* ============================================
+   STAGE LIGHTS EFFECT
+   ============================================ */
+.stage-lights {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.light {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+/* Stage Lights Removed for Minimal Theme */
+
+/* ============================================
+   IDLE STATE
+   ============================================ */
+.display-container.idle .slot-window {
+    opacity: 0.6;
+}
+
+.display-container.idle .slot-window .product-prices {
+    opacity: 0.3;
+}
+
+/* ============================================
+   BIG WIN SPECIAL EFFECTS
+   ============================================ */
+/* ============================================
+   BIG WIN SPECIAL EFFECTS
+   ============================================ */
+.display-container.big-win .top-banner {
+    background: rgba(211, 47, 47, 0.2);
+    border-bottom-color: var(--accent-red);
+}
+
+.display-container.big-win .banner-text {
+    color: var(--accent-red);
+    text-shadow: 0 0 10px rgba(211, 47, 47, 0.5);
+    animation: none;
+}
+
+/* ============================================
+   STATE TRANSITIONS
+   ============================================ */
+.fade-in {
+    animation: fadeIn var(--transition-normal) ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    animation: fadeOut var(--transition-normal) ease-out;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.slide-up {
+    animation: slideUp var(--transition-normal) ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   CURTAIN ANIMATION (IDLE STATE)
+   ============================================ */
+.curtain-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    pointer-events: none;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Aktif olduğunda tıklamaları engelle */
+.curtain-container.closed {
+    pointer-events: all;
+}
+
+/* Left and Right Panels */
+.curtain-left,
+.curtain-right {
+    flex: 1;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8);
+    position: relative;
+    transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.curtain-left {
+    background-image: url('assets/curtain-left.png');
+}
+
+.curtain-right {
+    background-image: url('assets/curtain-right.png');
+}
+
+/* Gold tassels / borders at the bottom - REMOVED per user request */
+
+/* Curtain Opening Animation */
+.curtain-container.open .curtain-left {
+    transform: translateX(-100%);
+}
+
+.curtain-container.open .curtain-right {
+    transform: translateX(100%);
+}
+
+/* Center Logo/Text on Curtain */
+.curtain-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 1;
+    transition: opacity 0.5s ease 0.2s;
+}
+
+.curtain-container.open .curtain-logo {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.curtain-logo span {
+    font-size: 32px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    /* Animation removed for minimalism */
+}
+
+.curtain-logo .curtain-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes curtainLogoBounce {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}

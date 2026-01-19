@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=840, height=112, initial-scale=1.0">
+    <title>LED Campaign Display</title>
+    <link rel="stylesheet" href="display.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="display-container">
+        <!-- Curtain Overlay -->
+        <div class="curtain-container" id="curtain">
+            <div class="curtain-left"></div>
+            <div class="curtain-right"></div>
+            <div class="curtain-logo">
+                <div class="curtain-text">#RueNights</div>
+            </div>
+        </div>
+
+        <!-- Top Banner -->
+        <div class="top-banner" id="topBanner">
+            <div class="banner-glow"></div>
+            <div class="banner-text" id="bannerText">#RueNights</div>
+        </div>
+
+        <!-- Slot Machine Area -->
+        <div class="slot-area">
+            <!-- Slot A -->
+            <div class="slot-window" id="slotA" data-slot="0">
+                <div class="slot-frame">
+                    <div class="slot-inner">
+                        <div class="slot-reel" id="reelA">
+                            <!-- Spinning reel strip with multiple icons -->
+                            <div class="reel-strip" id="reelStripA">
+                                <div class="reel-item">🍺</div>
+                                <div class="reel-item">🥃</div>
+                                <div class="reel-item">🍸</div>
+                                <div class="reel-item">🍹</div>
+                                <div class="reel-item">🍷</div>
+                                <div class="reel-item">🍺</div>
+                            </div>
+                            <!-- Final product display (shown after spin) -->
+                            <div class="slot-content" id="contentA">
+                                <div class="product-icon" id="iconA"></div>
+                                <div class="product-name" id="nameA">Ürün A</div>
+                                <div class="product-prices" id="pricesA">
+                                    <span class="old-price" id="oldPriceA">150₺</span>
+                                    <span class="new-price" id="newPriceA">120₺</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slot-glow"></div>
+                </div>
+            </div>
+
+            <!-- Slot B -->
+            <div class="slot-window" id="slotB" data-slot="1">
+                <div class="slot-frame">
+                    <div class="slot-inner">
+                        <div class="slot-reel" id="reelB">
+                            <!-- Spinning reel strip with multiple icons -->
+                            <div class="reel-strip" id="reelStripB">
+                                <div class="reel-item">🥃</div>
+                                <div class="reel-item">🍹</div>
+                                <div class="reel-item">🍺</div>
+                                <div class="reel-item">🍷</div>
+                                <div class="reel-item">🍸</div>
+                                <div class="reel-item">🥃</div>
+                            </div>
+                            <!-- Final product display (shown after spin) -->
+                            <div class="slot-content" id="contentB">
+                                <div class="product-icon" id="iconB"></div>
+                                <div class="product-name" id="nameB">Ürün B</div>
+                                <div class="product-prices" id="pricesB">
+                                    <span class="old-price" id="oldPriceB">150₺</span>
+                                    <span class="new-price" id="newPriceB">120₺</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slot-glow"></div>
+                </div>
+            </div>
+
+            <!-- Slot C -->
+            <div class="slot-window" id="slotC" data-slot="2">
+                <div class="slot-frame">
+                    <div class="slot-inner">
+                        <div class="slot-reel" id="reelC">
+                            <!-- Spinning reel strip with multiple icons -->
+                            <div class="reel-strip" id="reelStripC">
+                                <div class="reel-item">🍸</div>
+                                <div class="reel-item">🍺</div>
+                                <div class="reel-item">🥃</div>
+                                <div class="reel-item">🍹</div>
+                                <div class="reel-item">🍷</div>
+                                <div class="reel-item">🍸</div>
+                            </div>
+                            <!-- Final product display (shown after spin) -->
+                            <div class="slot-content" id="contentC">
+                                <div class="product-icon" id="iconC"></div>
+                                <div class="product-name" id="nameC">Ürün C</div>
+                                <div class="product-prices" id="pricesC">
+                                    <span class="old-price" id="oldPriceC">150₺</span>
+                                    <span class="new-price" id="newPriceC">120₺</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slot-glow"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Campaign Message Overlay (Winner State) -->
+        <div class="campaign-overlay" id="campaignOverlay">
+            <div class="campaign-message" id="campaignMessage">3 AL 2 ÖDE!</div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="bottom-bar">
+            <div class="timer-section" id="timerSection">
+                <div class="timer-label" id="timerLabel">GERİ SAYIM</div>
+                <div class="timer-value" id="timerValue">00:00</div>
+            </div>
+            <div class="marquee-section" id="marqueeSection">
+                <div class="marquee-track" id="marqueeTrack">
+                    <span class="marquee-text" id="marqueeText">🎰 Büyük fırsatları kaçırmayın! 🎰 Her gün yeni
+                        kampanyalar! 🎰</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage Lights Effect -->
+        <div class="stage-lights">
+            <div class="light light-left"></div>
+            <div class="light light-center"></div>
+            <div class="light light-right"></div>
+        </div>
+    </div>
+
+    <script src="display.js"></script>
+</body>
+
+</html>

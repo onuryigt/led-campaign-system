@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Campaign Admin</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">🎰</span>
+                <span class="logo-text">LED Campaign</span>
+            </div>
+            <nav class="nav">
+                <button class="nav-item active" data-page="live">
+                    <span class="nav-icon">📺</span>
+                    <span class="nav-label">Canlı Kontrol</span>
+                </button>
+                <button class="nav-item" data-page="templates">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-label">Şablonlar</span>
+                </button>
+                <button class="nav-item" data-page="products">
+                    <span class="nav-icon">📦</span>
+                    <span class="nav-label">Ürünler</span>
+                </button>
+            </nav>
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">Bağlanıyor...</span>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Live Control Page -->
+            <section class="page active" id="pageLive">
+                <header class="page-header">
+                    <h1>Canlı Kontrol</h1>
+                    <div class="current-state" id="currentState">
+                        <span class="state-label">Durum:</span>
+                        <span class="state-value" id="stateValue">IDLE</span>
+                    </div>
+                </header>
+
+                <div class="live-grid">
+                    <!-- Slot Configuration -->
+                    <div class="card slot-config">
+                        <h2 class="card-title">Slot Ayarları</h2>
+
+                        <div class="form-group">
+                            <label>Slot Tipi</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="slotType" value="single" id="slotTypeSingle">
+                                    <span>Single (Tek Aktif)</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="slotType" value="triple" id="slotTypeTriple" checked>
+                                    <span>Triple (3 Aktif)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="slots-container">
+                            <!-- Slot A -->
+                            <div class="slot-card" data-slot="0">
+                                <div class="slot-header">
+                                    <span class="slot-letter">A</span>
+                                    <label class="slot-active-toggle" id="activeToggle0">
+                                        <input type="radio" name="activeSlot" value="0">
+                                        <span>Aktif</span>
+                                    </label>
+                                </div>
+                                <!-- Mobile: Dropdown select -->
+                                <div class="slot-product-select">
+                                    <select id="productSelect0" class="product-dropdown">
+                                        <option value="">Ürün Seçin...</option>
+                                    </select>
+                                </div>
+                                <!-- Desktop: Drag & Drop -->
+                                <div class="slot-product-drop" id="slotDrop0" data-slot="0">
+                                    <span class="drop-placeholder">Ürün Sürükle</span>
+                                </div>
+                                <div class="slot-discount">
+                                    <select id="discountType0">
+                                        <option value="none">İndirim Yok</option>
+                                        <option value="percentage">% İndirim</option>
+                                        <option value="fixed">₺ İndirim</option>
+                                        <option value="manual">Manuel Fiyat</option>
+                                    </select>
+                                    <input type="number" id="discountValue0" placeholder="Değer" min="0">
+                                </div>
+                            </div>
+
+                            <!-- Slot B -->
+                            <div class="slot-card" data-slot="1">
+                                <div class="slot-header">
+                                    <span class="slot-letter">B</span>
+                                    <label class="slot-active-toggle" id="activeToggle1">
+                                        <input type="radio" name="activeSlot" value="1">
+                                        <span>Aktif</span>
+                                    </label>
+                                </div>
+                                <!-- Mobile: Dropdown select -->
+                                <div class="slot-product-select">
+                                    <select id="productSelect1" class="product-dropdown">
+                                        <option value="">Ürün Seçin...</option>
+                                    </select>
+                                </div>
+                                <!-- Desktop: Drag & Drop -->
+                                <div class="slot-product-drop" id="slotDrop1" data-slot="1">
+                                    <span class="drop-placeholder">Ürün Sürükle</span>
+                                </div>
+                                <div class="slot-discount">
+                                    <select id="discountType1">
+                                        <option value="none">İndirim Yok</option>
+                                        <option value="percentage">% İndirim</option>
+                                        <option value="fixed">₺ İndirim</option>
+                                        <option value="manual">Manuel Fiyat</option>
+                                    </select>
+                                    <input type="number" id="discountValue1" placeholder="Değer" min="0">
+                                </div>
+                            </div>
+
+                            <!-- Slot C -->
+                            <div class="slot-card" data-slot="2">
+                                <div class="slot-header">
+                                    <span class="slot-letter">C</span>
+                                    <label class="slot-active-toggle" id="activeToggle2">
+                                        <input type="radio" name="activeSlot" value="2">
+                                        <span>Aktif</span>
+                                    </label>
+                                </div>
+                                <!-- Mobile: Dropdown select -->
+                                <div class="slot-product-select">
+                                    <select id="productSelect2" class="product-dropdown">
+                                        <option value="">Ürün Seçin...</option>
+                                    </select>
+                                </div>
+                                <!-- Desktop: Drag & Drop -->
+                                <div class="slot-product-drop" id="slotDrop2" data-slot="2">
+                                    <span class="drop-placeholder">Ürün Sürükle</span>
+                                </div>
+                                <div class="slot-discount">
+                                    <select id="discountType2">
+                                        <option value="none">İndirim Yok</option>
+                                        <option value="percentage">% İndirim</option>
+                                        <option value="fixed">₺ İndirim</option>
+                                        <option value="manual">Manuel Fiyat</option>
+                                    </select>
+                                    <input type="number" id="discountValue2" placeholder="Değer" min="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Big Win Indicator -->
+                        <div class="big-win-indicator" id="bigWinIndicator">
+                            🎰 BIG WIN ALGILANDI! 🎰
+                        </div>
+                    </div>
+
+                    <!-- Products Palette -->
+                    <div class="card products-palette">
+                        <h2 class="card-title">Ürünler</h2>
+                        <div class="products-search">
+                            <input type="text" id="productSearch" placeholder="Ürün ara...">
+                        </div>
+                        <div class="products-list" id="productsList">
+                            <!-- Products will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Timing Config -->
+                    <div class="card timing-config">
+                        <h2 class="card-title">Zamanlama</h2>
+                        <div class="timing-grid">
+                            <div class="form-group">
+                                <label>Geri Sayım (sn)</label>
+                                <input type="number" id="countdownSeconds" value="10" min="1" max="60">
+                            </div>
+                            <div class="form-group">
+                                <label>Aktif Süre (sn)</label>
+                                <input type="number" id="activeDuration" value="30" min="5" max="300">
+                            </div>
+                            <div class="form-group">
+                                <label>Kazanan Süre (sn)</label>
+                                <input type="number" id="winnerDuration" value="15" min="5" max="120">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text Config -->
+                    <div class="card text-config">
+                        <h2 class="card-title">Metin Ayarları</h2>
+                        <div class="form-group">
+                            <label>Üst Banner Metni</label>
+                            <input type="text" id="bannerText" placeholder="BÜYÜK KAMPANYA">
+                        </div>
+                        <div class="form-group">
+                            <label>Kampanya Mesajı (Kazanan) <span class="required">*</span></label>
+                            <input type="text" id="campaignMessage" placeholder="3 AL 2 ÖDE!">
+                        </div>
+                        <div class="form-group">
+                            <label>Kayan Yazı</label>
+                            <input type="text" id="marqueeText" placeholder="Kampanyaları kaçırmayın!">
+                        </div>
+                        <div class="form-group">
+                            <label>Kayan Yazı Hızı</label>
+                            <select id="marqueeSpeed">
+                                <option value="slow">Yavaş</option>
+                                <option value="medium" selected>Orta</option>
+                                <option value="fast">Hızlı</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Control Buttons -->
+                    <div class="card control-buttons">
+                        <h2 class="card-title">Kontroller</h2>
+                        <div class="timer-display" id="timerDisplay">
+                            <span class="timer-label">Kalan:</span>
+                            <span class="timer-value" id="adminTimerValue">00:00</span>
+                        </div>
+                        <div class="button-grid">
+                            <button class="btn btn-primary" id="btnStartCountdown">
+                                ▶️ Geri Sayım Başlat
+                            </button>
+                            <button class="btn btn-secondary" id="btnStartNow">
+                                ⏩ Hemen Başlat
+                            </button>
+                            <button class="btn btn-accent" id="btnShowWinner">
+                                🏆 Kazananı Göster
+                            </button>
+                            <button class="btn btn-danger" id="btnStop">
+                                ⏹️ Durdur
+                            </button>
+                        </div>
+                        <button class="btn btn-outline" id="btnApplyConfig">
+                            💾 Ayarları Uygula
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preview -->
+                <div class="preview-section">
+                    <h2 class="preview-title">Önizleme</h2>
+                    <div class="preview-frame">
+                        <iframe src="/display" id="previewFrame"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Templates Page -->
+            <section class="page" id="pageTemplates">
+                <header class="page-header">
+                    <h1>Şablonlar</h1>
+                    <button class="btn btn-primary" id="btnSaveTemplate">
+                        💾 Mevcut Ayarları Kaydet
+                    </button>
+                </header>
+                <div class="templates-list" id="templatesList">
+                    <!-- Templates will be populated here -->
+                </div>
+            </section>
+
+            <!-- Products Page -->
+            <section class="page" id="pageProducts">
+                <header class="page-header">
+                    <h1>Ürün Yönetimi</h1>
+                    <button class="btn btn-primary" id="btnAddProduct">
+                        ➕ Yeni Ürün Ekle
+                    </button>
+                </header>
+                <div class="products-table-container">
+                    <table class="products-table" id="productsTable">
+                        <thead>
+                            <tr>
+                                <th>İkon</th>
+                                <th>İsim</th>
+                                <th>Fiyat</th>
+                                <th>Kategori</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody">
+                            <!-- Products will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for adding/editing products -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="productModalTitle">Yeni Ürün</h2>
+                <button class="modal-close" id="closeProductModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editProductId">
+                <div class="form-group">
+                    <label>İkon URL / Emoji</label>
+                    <input type="text" id="productIcon" placeholder="https://... veya 🍺">
+                </div>
+                <div class="form-group">
+                    <label>Ürün Adı</label>
+                    <input type="text" id="productName" placeholder="Efes Pilsen">
+                </div>
+                <div class="form-group">
+                    <label>Fiyat (₺)</label>
+                    <input type="number" id="productPrice" placeholder="100" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Kategori</label>
+                    <input type="text" id="productCategory" placeholder="Bira">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelProductModal">İptal</button>
+                <button class="btn btn-primary" id="saveProduct">Kaydet</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for saving templates -->
+    <div class="modal" id="templateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Şablon Kaydet</h2>
+                <button class="modal-close" id="closeTemplateModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Şablon Adı</label>
+                    <input type="text" id="templateName" placeholder="Bira Kampanyası">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelTemplateModal">İptal</button>
+                <button class="btn btn-primary" id="confirmSaveTemplate">Kaydet</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
