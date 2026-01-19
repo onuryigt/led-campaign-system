@@ -39,6 +39,16 @@ if (fs.existsSync(schemaPath)) {
     db.exec(schema);
 }
 
+// Seed products if database is empty
+const seedPath = path.join(__dirname, 'database', 'seed_products.sql');
+const productCount = db.prepare('SELECT COUNT(*) as count FROM products').get();
+if (productCount.count === 0 && fs.existsSync(seedPath)) {
+    console.log('Database is empty, seeding products...');
+    const seedSql = fs.readFileSync(seedPath, 'utf-8');
+    db.exec(seedSql);
+    console.log('Products seeded successfully!');
+}
+
 // Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
