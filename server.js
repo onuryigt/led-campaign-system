@@ -249,6 +249,21 @@ function stopToIdle() {
 // REST API ROUTES
 // ============================================
 
+// Root route
+app.get('/', (req, res) => {
+    res.send(`
+        <html>
+        <head><title>LED Campaign System</title></head>
+        <body style="font-family: Arial; text-align: center; padding: 50px;">
+            <h1>🎰 LED Campaign System</h1>
+            <p>Choose your interface:</p>
+            <a href="/display" style="display: inline-block; margin: 10px; padding: 15px 30px; background: #D32F2F; color: white; text-decoration: none; border-radius: 5px;">Display</a>
+            <a href="/admin" style="display: inline-block; margin: 10px; padding: 15px 30px; background: #333; color: white; text-decoration: none; border-radius: 5px;">Admin Panel</a>
+        </body>
+        </html>
+    `);
+});
+
 // Routes for display and admin
 app.get('/display', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'display', 'display.html'));
