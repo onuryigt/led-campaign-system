@@ -256,13 +256,13 @@
     }
 
     function updateBanner(state, displayState, isBigWin) {
-        let bannerText = state.banner_text || '#RueNights';
+        let bannerText = state.banner_text || '#RueNıghts';
 
         if (displayState === STATES.WINNER && isBigWin) {
-            bannerText = '#RueNights';
+            bannerText = '#RueNıghts';
             elements.topBanner.classList.add('big-win');
         } else if (displayState === STATES.WINNER) {
-            bannerText = '#RueNights';
+            bannerText = '#RueNıghts';
             elements.topBanner.classList.remove('big-win');
         } else {
             elements.topBanner.classList.remove('big-win');
