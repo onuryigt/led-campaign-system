@@ -269,6 +269,7 @@ app.get('/', (req, res) => {
             <p>Choose your interface:</p>
             <a href="/display" style="display: inline-block; margin: 10px; padding: 15px 30px; background: #D32F2F; color: white; text-decoration: none; border-radius: 5px;">Display</a>
             <a href="/admin" style="display: inline-block; margin: 10px; padding: 15px 30px; background: #333; color: white; text-decoration: none; border-radius: 5px;">Admin Panel</a>
+            <a href="/sounds" style="display: inline-block; margin: 10px; padding: 15px 30px; background: #1976D2; color: white; text-decoration: none; border-radius: 5px;">🔊 Sound Effects</a>
         </body>
         </html>
     `);
@@ -281,6 +282,10 @@ app.get('/display', (req, res) => {
 
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'admin', 'admin.html'));
+});
+
+app.get('/sounds', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'sounds', 'sounds.html'));
 });
 
 // Get all products

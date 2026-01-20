@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ses Efektleri - LED Campaign System</title>
+    <link rel="stylesheet" href="sounds.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">🔊 Ses Efektleri Paneli</h1>
+            <p class="subtitle">Kampanya duyurularını manuel olarak çalın</p>
+        </header>
+
+        <div class="button-grid">
+            <!-- Kampanya Öncesi İlk Duyuru -->
+            <div class="sound-card">
+                <div class="card-icon">🎯</div>
+                <h2 class="card-title">Kampanya Öncesi İlk Duyuru</h2>
+                <p class="card-description">Kampanyayı duyurmak için ilk bilgilendirme</p>
+                <button class="play-button" id="announcement-first" data-sound="first">
+                    <span class="button-icon">▶</span>
+                    <span class="button-text">Çal</span>
+                </button>
+                <div class="status-indicator" id="status-first"></div>
+            </div>
+
+            <!-- Kampanya Öncesi Son Duyuru -->
+            <div class="sound-card">
+                <div class="card-icon">⏰</div>
+                <h2 class="card-title">Kampanya Öncesi Son Duyuru</h2>
+                <p class="card-description">Kampanya başlamadan son uyarı</p>
+                <button class="play-button" id="announcement-last" data-sound="last">
+                    <span class="button-icon">▶</span>
+                    <span class="button-text">Çal</span>
+                </button>
+                <div class="status-indicator" id="status-last"></div>
+            </div>
+
+            <!-- Kampanya Sonrası Duyuru -->
+            <div class="sound-card">
+                <div class="card-icon">🎉</div>
+                <h2 class="card-title">Kampanya Sonrası Duyuru</h2>
+                <p class="card-description">Kampanya bitişini bildiren duyuru</p>
+                <button class="play-button" id="announcement-after" data-sound="after">
+                    <span class="button-icon">▶</span>
+                    <span class="button-text">Çal</span>
+                </button>
+                <div class="status-indicator" id="status-after"></div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <a href="/" class="back-link">← Ana Sayfaya Dön</a>
+            <a href="/admin" class="admin-link">Yönetim Paneli →</a>
+        </footer>
+    </div>
+
+    <script src="sounds.js"></script>
+</body>
+
+</html>
